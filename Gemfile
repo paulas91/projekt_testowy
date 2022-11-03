@@ -30,6 +30,7 @@ group :development do
   gem 'annotate'
   gem 'web-console'
   gem 'faker'
+  gem 'hotwire-livereload'
 end
 
 group :test do
@@ -37,3 +38,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+ gem "redis"
+
+gem "jsbundling-rails", "~> 1.0"
