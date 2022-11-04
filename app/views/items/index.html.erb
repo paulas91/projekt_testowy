@@ -9,8 +9,8 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Active</th>
-        <th>Borrowed</th>
+        <th class="text-center">Active</th>
+        <th class="text-center">Borrowed</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -18,9 +18,11 @@
     <% @items.each do |item| %>
         <tr>
           <td><%= item.name %></td>
-          <td><%= item.active %></td>
-          <td><%= item.borrowed %></td>
-          <td><%= link_to "Show this item", item, class: "btn btn-primary btn-sm" %></td>
+          <td class="text-center"><%= item.active ? "✅" : "❌" %></td>
+          <td class="text-center"><%= item.borrowed ? "✅" : "❌" %></td>
+          <td>
+            <%= link_to "Show this item", item, class: "btn btn-primary btn-sm" %>
+          </td>
         </tr>
     <% end %>
     </tbody>

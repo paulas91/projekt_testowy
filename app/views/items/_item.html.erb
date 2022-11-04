@@ -1,17 +1,16 @@
-<div id="<%= dom_id item %>">
-  <p>
-    <strong>Name:</strong>
-    <%= item.name %>
-  </p>
+<%= form_with(model: item) do |form| %>
+  <div>
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control', readonly: true %>
+  </div>
 
-  <p>
-    <strong>Active:</strong>
-    <%= item.active %>
-  </p>
+  <div class="form-check">
+    <%= form.label :active, class: "form-check-label" %>
+    <%= form.check_box :active, class: 'form-check-input', disabled: true %>
+  </div>
 
-  <p>
-    <strong>Borrowed:</strong>
-    <%= item.borrowed %>
-  </p>
-
-</div>
+  <div class="form-check">
+    <%= form.label :borrowed, class: "form-check-label" %>
+    <%= form.check_box :borrowed, class: 'form-check-input', disabled: true %>
+  </div>
+<% end %>
