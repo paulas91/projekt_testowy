@@ -11,6 +11,7 @@
         <th>Name</th>
         <th class="text-center">Active</th>
         <th class="text-center">Borrowed</th>
+        <th class="text-center">Type</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -20,6 +21,7 @@
           <td><%= item.name %></td>
           <td class="text-center"><%= item.active ? "✅" : "❌" %></td>
           <td class="text-center"><%= item.borrowed ? "✅" : "❌" %></td>
+          <td class="text-center"><%= item.item_type %></td>
           <td>
             <%= link_to "Show this item", item, class: "btn btn-primary btn-sm" %>
           </td>
