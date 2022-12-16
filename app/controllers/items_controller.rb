@@ -57,6 +57,22 @@ class ItemsController < ApplicationController
     end
   end
 
+  def active
+    @items = Item.active
+  end
+
+  def inactive
+    @items = Item.inactive
+  end
+
+  def borrowed
+    @items = Item.borrowed
+  end
+
+  def on_place
+    @items = Item.on_place
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
