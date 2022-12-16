@@ -4,29 +4,4 @@
 
 <%= link_to "New item", new_item_path, class: "btn btn-primary btn-sm"  %>
 
-<div id="items", class="container-fluid">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th class="text-center">Active</th>
-        <th class="text-center">Borrowed</th>
-        <th class="text-center">Type</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @items.each do |item| %>
-        <tr>
-          <td><%= item.name %></td>
-          <td class="text-center"><%= item.active ? "✅" : "❌" %></td>
-          <td class="text-center"><%= item.borrowed ? "✅" : "❌" %></td>
-          <td class="text-center"><%= item.item_type %></td>
-          <td>
-            <%= link_to "Show this item", item, class: "btn btn-primary btn-sm" %>
-          </td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
-
+<%= render "items/items_list" %>
