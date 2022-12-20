@@ -12,8 +12,9 @@
 #
 class Item < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: {minimum:3, maximum:25}
-
+  
   enum item_type: %i[book cd electric_device flower other bizuteria odziez]
+  validates :item_type, inclusion: { in: item_types.keys }
 
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false)}
