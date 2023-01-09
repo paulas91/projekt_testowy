@@ -13,4 +13,8 @@
     <%= form.label :borrowed, class: "form-check-label" %>
     <%= form.check_box :borrowed, class: 'form-check-input', disabled: true %>
   </div>
+  <div class="form-group mt-2 mb-2">
+    <%= form.label :item_type, class: "form-check-label" %>
+    <%= form.select :item_type, Item.item_types.keys, {}, class: 'form-select', disabled: true %>
+  </div>
 <% end %>
