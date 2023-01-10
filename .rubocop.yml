@@ -30,6 +30,19 @@ Metrics/PerceivedComplexity:
   Max: 9
 Layout/LineLength:
   Max: 198
+RSpec/DescribeClass:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Rails/FilePath:
+  Exclude:
+    - 'spec/rspec_methods_spec.rb'
+RSpec/ExpectActual:
+  Enabled: false
+Rails/FilePath:
+  Enabled: false
+
+
 
 
 
