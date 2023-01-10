@@ -12,6 +12,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_items_on_name  (name) UNIQUE
+#
 require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
