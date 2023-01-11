@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 describe 'sample spec' do
   it 'true is true' do
@@ -8,4 +9,3 @@ describe 'sample spec' do
     expect(false).not_to eq true
   end
 end
-
