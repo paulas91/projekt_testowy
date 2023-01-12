@@ -19,6 +19,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 group :development, :test do
   gem 'brakeman'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'faker'
   gem 'rails_best_practices', '~> 1.23', '>= 1.23.2'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
@@ -35,8 +36,12 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'database_cleaner-active_record'
   gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers'
 end
 gem 'redis'
