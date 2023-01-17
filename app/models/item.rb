@@ -11,10 +11,15 @@
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :integer
 #
 # Indexes
 #
 #  index_items_on_name  (name) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
 #
 class Item < ApplicationRecord
   enum item_type: { book: 0, cd: 1, electric_device: 2, flower: 3, other: 4, bizuteria: 5, odziez: 6 }
