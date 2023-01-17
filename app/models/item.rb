@@ -30,4 +30,6 @@ class Item < ApplicationRecord
   scope :inactive, -> { where(active: false) }
   scope :borrowed, -> { where(borrowed: true) }
   scope :on_place, -> { where(borrowed: false) }
+
+  belongs_to :user
 end
