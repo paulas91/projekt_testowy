@@ -349,8 +349,8 @@ DEPENDENCIES
   capybara
   database_cleaner-active_record
   debug
-  factory_bot_rails
   devise
+  factory_bot_rails
   faker
   hotwire-livereload
   importmap-rails

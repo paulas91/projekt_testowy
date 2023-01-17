@@ -30,7 +30,6 @@ end
 
 group :development do
   gem 'annotate'
-  gem 'faker'
   gem 'hotwire-livereload'
   gem 'web-console'
 end
