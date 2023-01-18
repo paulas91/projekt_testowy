@@ -1,4 +1,10 @@
 describe ItemsController, type: :controller do
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
   describe 'GET #index' do
     subject(:index_request) { get :index }
 
@@ -14,7 +20,7 @@ describe ItemsController, type: :controller do
   end
 
   describe 'GET #show' do
-    let(:item) { create(:item) }
+    let(:item) { create(:item, user: user) }
     subject(:show_request) { get :show, params: { id: item.id } }
 
     it 'returns http success' do
@@ -43,7 +49,7 @@ describe ItemsController, type: :controller do
   end
 
   describe 'GET #edit' do
-    let(:item) { create(:item) }
+    let(:item) { create(:item, user: user) }
     subject(:edit_request) { get :edit, params: { id: item.id } }
 
     it 'returns http succes' do
@@ -77,7 +83,7 @@ describe ItemsController, type: :controller do
   end
 
   describe 'PUT #update' do
-    let(:item) { create(:item) }
+    let(:item) { create(:item, user: user) }
     let(:new_attributes) { attributes_for(:item) }
     subject(:update_request) { put :update, params: { id: item.id, item: new_attributes }}
 
@@ -98,7 +104,7 @@ describe ItemsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    let!(:item) { create(:item) }
+    let!(:item) { create(:item, user: user) }
     subject(:destroy_request) { delete :destroy, params: { id: item.id } }
 
     it 'returns http redirect' do
