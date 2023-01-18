@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: items
@@ -30,9 +32,9 @@ describe Item, type: :model do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:name)}
+    it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_length_of(:name).is_at_least(3) }
     it { is_expected.to validate_length_of(:name).is_at_most(25) }
-    it { is_expected.to define_enum_for(:item_type).with_values(Item.item_types) }
+    it { is_expected.to define_enum_for(:item_type).with_values(described_class.item_types) }
   end
 end

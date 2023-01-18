@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MyLogger
   attr_reader :messages
 
@@ -15,9 +17,9 @@ class MyLogger
   end
 end
 
-
 describe MyLogger do
   subject(:logger) { described_class.new }
+
   let(:message1) { 'Hello World' }
   let(:message2) { 'Ruby is awesome!' }
 
@@ -30,8 +32,8 @@ describe MyLogger do
     expect(logged_message).to include message1
   end
 
-  context 'for loggin' do
-    let(:message1) { 'Other message'}
+  context 'with loggin' do
+    let(:message1) { 'Other message' }
 
     before do
       logger.log(message1)
