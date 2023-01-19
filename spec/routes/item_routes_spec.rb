@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Item routes', type: :routing do
   it { expect(get: '/items').to route_to('items#index') }
   it { expect(get: '/items/1').to route_to('items#show', id: '1') }
@@ -8,5 +10,4 @@ describe 'Item routes', type: :routing do
   it { expect(get: '/items/inactive').to route_to('items#inactive') }
   it { expect(get: '/items/borrowed').to route_to('items#borrowed') }
   it { expect(get: '/items/on_place').to route_to('items#on_place') }
-
 end

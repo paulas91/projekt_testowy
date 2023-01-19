@@ -6,6 +6,8 @@ require:
 AllCops:
   Exclude:
     - 'bin/bundle'
+    - 'db/**/*'
+    - 'config/**/*'
 
 Style/Documentation:
   Exclude:
@@ -37,10 +39,20 @@ Style/Documentation:
 Rails/FilePath:
   Exclude:
     - 'spec/rspec_methods_spec.rb'
+    - 'spec/subject_described_class_spec.rb'
 RSpec/ExpectActual:
   Enabled: false
 Rails/FilePath:
   Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
+
+
+
+
+
 
 
 

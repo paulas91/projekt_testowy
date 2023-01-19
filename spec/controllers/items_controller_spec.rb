@@ -1,4 +1,12 @@
+# frozen_string_literal: true
+
 describe ItemsController, type: :controller do
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
   describe 'GET #index' do
     subject(:index_request) { get :index }
 
@@ -14,8 +22,9 @@ describe ItemsController, type: :controller do
   end
 
   describe 'GET #show' do
-    let(:item) { create(:item) }
     subject(:show_request) { get :show, params: { id: item.id } }
+
+    let(:item) { create(:item, user:) }
 
     it 'returns http success' do
       show_request
@@ -43,8 +52,9 @@ describe ItemsController, type: :controller do
   end
 
   describe 'GET #edit' do
-    let(:item) { create(:item) }
     subject(:edit_request) { get :edit, params: { id: item.id } }
+
+    let(:item) { create(:item, user:) }
 
     it 'returns http succes' do
       edit_request
@@ -58,12 +68,13 @@ describe ItemsController, type: :controller do
   end
 
   describe 'POST #create' do
-    let(:item) { build(:item) }
     subject(:create_request) { post :create, params: { item: item.attributes } }
+
+    let(:item) { build(:item) }
 
     it 'returns http redirect' do
       create_request
-      expect(response).to have_http_status(302)
+      expect(response).to have_http_status(:found)
     end
 
     it 'redirects to the new item' do
@@ -77,13 +88,14 @@ describe ItemsController, type: :controller do
   end
 
   describe 'PUT #update' do
-    let(:item) { create(:item) }
+    subject(:update_request) { put :update, params: { id: item.id, item: new_attributes } }
+
+    let(:item) { create(:item, user:) }
     let(:new_attributes) { attributes_for(:item) }
-    subject(:update_request) { put :update, params: { id: item.id, item: new_attributes }}
 
     it 'returns http redirect' do
       update_request
-      expect(response).to have_http_status(302)
+      expect(response).to have_http_status(:found)
     end
 
     it 'redirects to update' do
@@ -94,16 +106,16 @@ describe ItemsController, type: :controller do
     it 'updates the item' do
       expect { update_request }.to change { item.reload.name }.to(new_attributes[:name])
     end
-
   end
 
   describe 'DELETE #destroy' do
-    let!(:item) { create(:item) }
     subject(:destroy_request) { delete :destroy, params: { id: item.id } }
+
+    let!(:item) { create(:item, user:) }
 
     it 'returns http redirect' do
       destroy_request
-      expect(response).to have_http_status(302)
+      expect(response).to have_http_status(:found)
     end
 
     it 'redirects to the items index' do
@@ -145,7 +157,7 @@ describe ItemsController, type: :controller do
   end
 
   describe 'GET #borrowed' do
-    subject(:borrowed_request) { get :borrowed}
+    subject(:borrowed_request) { get :borrowed }
 
     it 'returns http success' do
       borrowed_request
@@ -156,8 +168,6 @@ describe ItemsController, type: :controller do
       borrowed_request
       expect(response).to render_template('borrowed')
     end
-
-
   end
 
   describe 'GET #on_place' do

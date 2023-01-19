@@ -8,6 +8,7 @@ gem 'rails', '~> 7.0.4'
 gem 'sprockets-rails'
 # gem "sqlite3", "~> 1.4"
 gem 'bootsnap', require: false
+gem 'devise'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg'
@@ -29,7 +30,6 @@ end
 
 group :development do
   gem 'annotate'
-  gem 'faker'
   gem 'hotwire-livereload'
   gem 'web-console'
 end
@@ -37,9 +37,9 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner-active_record'
-  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers'
