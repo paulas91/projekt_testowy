@@ -9,6 +9,7 @@ describe 'Friendship relation' do
       user.save!
       expect(user.reload.friends.last).to eq friend
     end
+  end
 
   describe 'friends list' do
     let(:friends) { create_list(:user, 5) }
@@ -20,7 +21,6 @@ describe 'Friendship relation' do
       user.save
       expect(user.friends.count).to eq friends.count
       expect(user.friends.pluck(:id)).to eq friends.pluck(:id)
-      end
     end
   end
 end

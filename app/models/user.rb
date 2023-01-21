@@ -35,4 +35,6 @@ class User < ApplicationRecord
   end
 
   has_many :items, dependent: :destroy
+  has_many :friendships, inverse_of: :user, dependent: :destroy
+  has_many :friends, through: :friendships
 end
