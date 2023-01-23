@@ -15,5 +15,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :friends, only: %i[index show]
+  resources :invitations, only: %i[create]
 
 end
