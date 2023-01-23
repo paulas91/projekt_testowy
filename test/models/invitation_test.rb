@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: invitations
@@ -13,7 +15,7 @@
 #  index_invitations_on_invited_by_id  (invited_by_id)
 #  index_invitations_on_invited_id     (invited_id)
 #
-require "test_helper"
+require 'test_helper'
 
 class InvitationTest < ActiveSupport::TestCase
   # test "the truth" do

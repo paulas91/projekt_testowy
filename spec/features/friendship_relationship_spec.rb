@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'Friendship relation' do
   let(:user) { create(:user) }
 
@@ -24,4 +26,3 @@ describe 'Friendship relation' do
     end
   end
 end
-

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe InvitationsController, type: :controller do
   let(:user) { create(:user) }
 
@@ -6,12 +8,13 @@ describe InvitationsController, type: :controller do
   end
 
   describe '#create' do
+    subject(:create_request) { post :create, params: }
 
-    let(:params) {{
-      invitation: { email: email }
-    }}
-
-    subject(:create_request) { post :create, params: params }
+    let(:params) do
+      {
+        invitation: { email: }
+      }
+    end
 
     context 'when user exists' do
       let!(:friend) { create(:user) }
@@ -28,7 +31,6 @@ describe InvitationsController, type: :controller do
       it 'does not create invitation' do
         expect { create_request }.not_to change(Invitation, :count)
       end
-
     end
 
     context 'when invitation already sent' do
@@ -36,7 +38,7 @@ describe InvitationsController, type: :controller do
       let(:email) { friend.email }
 
       it 'does not create duplicate invitation' do
-        Invitation.create!(invited_id: friend.id, invited_by_id: user.id )
+        Invitation.create!(invited_id: friend.id, invited_by_id: user.id)
         expect { create_request }.not_to change(Invitation, :count)
       end
     end
