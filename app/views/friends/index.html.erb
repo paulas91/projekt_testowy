@@ -17,6 +17,8 @@
           <div class='form-group'>
             <%= form.label :email, class: 'form-label' %>
             <%= form.text_field :email, class: 'form-control form-control-lg', placeholder: 'Email' %>
+          </div>
+        </div>
         <div class="modal-footer">
           <%= form.submit 'Send invitation', class: 'btn btn-primary' %>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -25,3 +27,7 @@
     </div>
   </div>
 </div>
+
+
+  <%= render 'invitations/invitations', received_invitations: @received_invitations, sent_invitations: @sent_invitations %>
+
