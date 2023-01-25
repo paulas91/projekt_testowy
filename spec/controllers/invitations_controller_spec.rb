@@ -12,7 +12,7 @@ describe InvitationsController, type: :controller do
     let(:invitation) { create(:invitation, invited_id: user.id, invited_by_id: friend.id) }
     let(:params) {{ id: invitation.id }}
 
-    subject(:accept_request) { post :accept, params: params}
+    subject(:accept_request) { post :accept, params: params }
     #akceptowanie zaproszenia
     #tworzy się friendship
     #użytkownicy stają się znajomymi
@@ -25,7 +25,7 @@ describe InvitationsController, type: :controller do
     end
 
     it 'creates friendship for users from invitation' do
-      expect { accept_request}.to change(Friendship, :count).by(2)
+      expect { accept_request }.to change(Friendship, :count).by(2)
     end
 
     it 'users are friends' do
@@ -55,11 +55,46 @@ describe InvitationsController, type: :controller do
   end
 
   describe '#reject' do
+    subject(:reject_request) { post :reject, params: params}
 
+    let(:friend) { create(:user) }
+    let(:invitation) { create(:invitation, invited_id: user.id, invited_by_id: friend.id) }
+    let(:params) { { id: invitation.id } }
+
+    # odrzucanie zaproszenia
+    #nie tworzy się żadna znajomość
+
+    #jeśli zaproszenie nie należy do usera
+    #jeśli zaproszenie nie może zostać odrzucone
+    it 'rejects the invitation' do
+      expect { reject_request }.to change { invitation.reload.state }.from("pending").to("rejected")
+    end
+
+    it 'does not create any friendship' do
+      expect { reject_request }.not_to change(Friendship, :count)
+    end
+
+    context 'when invitation does not belong to user' do
+      let(:invitation) { create(:invitation, invited_by_id: friend.id, invited_id: 123123123) }
+
+      it 'cannot accept this invitation' do
+        expect { reject_request }.to raise_error ActiveRecord::RecordNotFound
+      end
+    end
+
+    context 'when invitation cannot be rejected' do
+      before do
+        invitation.accept!
+      end
+
+      it 'raises error' do
+        expect { reject_request }.to raise_error AASM::InvalidTransition
+      end
+    end
   end
 
   describe '#create' do
-    subject(:create_request) { post :create, params: }
+    subject(:create_request) { post :create, params: params }
 
     let(:params) do
       {
@@ -95,3 +130,4 @@ describe InvitationsController, type: :controller do
     end
   end
 end
+

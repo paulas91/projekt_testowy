@@ -28,7 +28,7 @@ class Invitation < ApplicationRecord
     end
 
     event :reject do
-      transitions form: :pending, to: :rejected
+      transitions from: :pending, to: :rejected
     end
   end
 
