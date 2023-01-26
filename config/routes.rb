@@ -26,4 +26,6 @@ Rails.application.routes.draw do
       post :reject
     end
   end
+
+  resources :notifications, only: %i[index]
 end
