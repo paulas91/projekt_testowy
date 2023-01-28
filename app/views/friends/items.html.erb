@@ -12,10 +12,16 @@
       <tr>
         <td><%= item.name %></td>
         <td>
-          <%= link_to 'Show', '#' %>
+          <% if item.requested_by?(current_user) %>
+          <span class="text-muted">
+            Request pending
+          </span>
+          <% else %>
+            <%= link_to 'Borrow', request_rent_item_path(item), data: { turbo_method: :post } %>
+          <% end %>
         </td>
       </tr>
     <% end %>
-  </body>
+  </tbody>
 </table>
 

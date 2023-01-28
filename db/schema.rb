@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_28_095732) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_28_135821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_28_095732) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "rental_requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_rental_requests_on_item_id"
+    t.index ["user_id"], name: "index_rental_requests_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -74,4 +83,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_28_095732) do
 
   add_foreign_key "items", "users"
   add_foreign_key "notifications", "users"
+  add_foreign_key "rental_requests", "items"
+  add_foreign_key "rental_requests", "users"
 end
