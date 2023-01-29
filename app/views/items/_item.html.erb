@@ -17,4 +17,11 @@
     <%= form.label :item_type, class: "form-check-label" %>
     <%= form.select :item_type, Item.item_types.keys, {}, class: 'form-select', disabled: true %>
   </div>
+  <% if item.borrowed && item.borrowed_to %>
+    <div class="d-flex flex-column">
+      <p><%= item.borrowed_to&.email %></p>
+      <p><%= distance_of_time_in_words_to_now(item.borrowed_at) %></p> ago
+    </div>
+  <% end %>
+
 <% end %>
