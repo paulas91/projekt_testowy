@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(message) do %>
-  <div class="d-flex flex-row <%= my_message_class(message, current_user) %>">
+  <div class="d-flex flex-row <%= my_message_class(message, current_user) %>" data-controller="messages">
     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
         alt="avatar 1" style="width: 45px; height: 100%;">
     <div>
