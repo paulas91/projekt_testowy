@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Nowaaplikacja</title>
+    <script type="module" src="index.js"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,6 +13,7 @@
     <%= action_cable_meta_tag %>
     <%= hotwire_livereload_tags if Rails.env.development? %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
 
   </head>
 
@@ -26,6 +28,7 @@
       <div class="container-fluid">
         <p class="navbar-brand mb-0"><%= app_title %></p>
         <% if user_signed_in? %>
+          <%= turbo_stream_from [current_user,:notications] %>
           <%= render 'shared/navbar' %>
         <% else %>
           <div class='navbar-nav'>

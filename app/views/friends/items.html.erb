@@ -1,0 +1,27 @@
+<%= render 'friends/friend', friend: @friend %>
+<h1>Items</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @friend.items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td>
+          <% if item.requested_by?(current_user) %>
+          <span class="text-muted">
+            Request pending
+          </span>
+          <% else %>
+            <%= link_to 'Borrow', request_rent_item_path(item), data: { turbo_method: :post } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

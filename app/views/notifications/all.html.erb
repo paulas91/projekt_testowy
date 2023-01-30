@@ -1,0 +1,5 @@
+<div class="container-fluid">
+  <h1> All notifications </h1>
+  <%= link_to "All", all_notifications_path %>
+  <%= render 'notifications/notifications_list', notifications: @notifications %>
+</div>

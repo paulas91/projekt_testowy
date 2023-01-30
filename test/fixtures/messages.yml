@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id            :bigint           not null, primary key
+#  body          :text
+#  read_at       :datetime
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  receipient_id :integer          not null
+#  sender_id     :integer          not null
+#
+# Indexes
+#
+#  index_messages_on_receipient_id  (receipient_id)
+#  index_messages_on_sender_id      (sender_id)
+#
+
+one:
+  receipient_id: 1
+  sender_id: 1
+  body: MyText
+  read_at: 2023-01-30 10:18:50
+
+two:
+  receipient_id: 1
+  sender_id: 1
+  body: MyText
+  read_at: 2023-01-30 10:18:50
