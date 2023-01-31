@@ -39,7 +39,7 @@ class Invitation < ApplicationRecord
 
   after_create do
     invited_user.notifications.create(data: {
-      message: "#{invited_user.email} has invited you to friends.",
+      message: "#{inviting_user.email} has invited you to friends.",
       type: 'invitation',
       path: '/friends'
     })
