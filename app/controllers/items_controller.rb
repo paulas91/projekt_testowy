@@ -77,6 +77,7 @@ class ItemsController < ApplicationController
                                     path: item_path(item)
 
     })
+    RentalRequestMailer.ask(owner, current_user, item).deliver_now
     redirect_to items_friend_path(owner)
   end
 
