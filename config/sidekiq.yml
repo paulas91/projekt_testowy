@@ -2,6 +2,7 @@
 
 :scheduler:
   :schedule:
-    test:
-      cron: ' * * * * *'   # Runs once per minute
-      class: TestJob
+    item_reminder:
+      cron: "0 13 */1 * *"
+      class: "ItemsReminderJob"
+
