@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
 
-  devise_for :users
+  mount Sidekiq::Web => '/sidekiq'
+  devise_for :users, controllers: { invitations: 'users/invitations' }
   root 'items#index'
   resources :items do
     collection do

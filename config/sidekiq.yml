@@ -1,0 +1,8 @@
+# config/sidekiq.yml
+
+:scheduler:
+  :schedule:
+    item_reminder:
+      cron: "0 13 */1 * *"
+      class: "ItemsReminderJob"
+

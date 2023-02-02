@@ -17,6 +17,8 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'aasm'
+gem 'devise_invitable', '~> 2.0.0'
+gem 'sidekiq-scheduler'
 
 group :development, :test do
   gem 'brakeman'
@@ -27,12 +29,14 @@ group :development, :test do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
+  gem 'pry'
 end
 
 group :development do
   gem 'annotate'
   gem 'hotwire-livereload'
   gem 'web-console'
+  gem 'letter_opener'
 end
 
 group :test do
