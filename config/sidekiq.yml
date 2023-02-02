@@ -1,0 +1,7 @@
+# config/sidekiq.yml
+
+:scheduler:
+  :schedule:
+    test:
+      cron: ' * * * * *'   # Runs once per minute
+      class: TestJob
